@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import type { JellyBean } from '../types/bean'
+import type { Emoji } from '../types/emoji'
 
-const ListView = () => {
+interface Props {
+    emojis: Emoji[];
+}
+
+const ListView = ({ emojis }: Props) => {
   return (
     <div>ListView</div>
   )

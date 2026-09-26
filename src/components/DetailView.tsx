@@ -1,6 +1,11 @@
 import React from 'react'
+import type { Emoji } from '../types/emoji'
 
-const DetailView = () => {
+interface Props {
+    emojis: Emoji[];
+}
+
+const DetailView = ({ emojis }: Props) => {
   return (
     <div>DetailView</div>
   )

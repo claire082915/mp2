@@ -1,14 +1,14 @@
 import axios from 'axios';
-import type { ApiResponse, JellyBean } from '../types/bean';
+import type { Emoji } from '../types/emoji';
 
-const API_URL = 'https://jellybellywikiapi.onrender.com/api';
+const API_URL = 'https://emojihub.yurace.pro/api';
 
-export const fetchAllBeans = async (): Promise<JellyBean[]> => {
-    const response = await axios.get<ApiResponse>(`${API_URL}/Beans?pageSize=100`);
-    return response.data.items;
+export const fetchAllEmojis = async (): Promise<Emoji[]> => {
+    const response = await axios.get<Emoji[]>(`${API_URL}/all`);
+    return response.data;
 }
 
-export const fetchBeanById = async (id: number): Promise<JellyBean> => {
-    const response = await axios.get<JellyBean>(`${API_URL}/Beans/${id}`);
-    return response.data;
+export const fetchEmojiByName = async (name: string): Promise<Emoji> => {
+    const response = await axios.get<Emoji[]>(`${API_URL}/search?q=${encodeURIComponent(name)}`);
+    return response.data[0];
 }
