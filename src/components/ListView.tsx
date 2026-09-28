@@ -50,7 +50,6 @@ const ListView = ({ emojis }: Props) => {
                 <select id="emoji-sort" className={styles.select} value={sortBy} onChange={(e) => setSortBy(e.target.value as any)} aria-label="Sort emojis by">
                     <option value="name">Name</option>
                     <option value="category">Category</option>
-                    <option value="group">Group</option>
                 </select>
 
                 <button 

@@ -20,19 +20,16 @@ const CATEGORIES = [
 ];
 
 const GalleryView = ({ emojis }: Props) => {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     const toggleCategory = (cat: string) => {
-        setSelectedCategories((prev) =>
-            prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
-        );
+        setSelectedCategory((prev) => (prev === cat ? null : cat));
     };
 
     const filteredEmojis = useMemo(() => {
-        if (selectedCategories.length === 0) return emojis;
-        return emojis.filter((e) => 
-            selectedCategories.includes((e.category ?? '').toLowerCase()));
-    }, [emojis, selectedCategories])
+        if (!selectedCategory) return emojis;
+        return emojis.filter((e) => (e.category ?? '').toLowerCase() === selectedCategory);
+    }, [emojis, selectedCategory])
 
     return (
         <div className={styles.container}>
@@ -41,11 +38,12 @@ const GalleryView = ({ emojis }: Props) => {
 
                 <div className={styles.chips}>
                     {CATEGORIES.map((cat) => {
-                        const checked = selectedCategories.includes(cat);
+                        const checked = selectedCategory === cat;
                         return (
                             <label key={cat} className={`${styles.chip} ${checked ? styles.chipActive : ''}`}>
                                 <input 
-                                    type="checkbox"
+                                    type="radio"
+                                    name="category"
                                     className={styles.checkbox}
                                     checked={checked}
                                     onChange={() => toggleCategory(cat)}
@@ -56,9 +54,9 @@ const GalleryView = ({ emojis }: Props) => {
                         
                     })}
                 </div>
-                {selectedCategories.length > 0 && (
-                    <button type="button" className={styles.clearButton} onClick={() => setSelectedCategories([])}>
-                        Clear filters
+                {selectedCategory && (
+                    <button type="button" className={styles.clearButton} onClick={() => setSelectedCategory(null)}>
+                        Clear filter
                     </button>
                 )}
             </fieldset>
