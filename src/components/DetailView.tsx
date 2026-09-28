@@ -27,7 +27,7 @@ const DetailView = ({ emojis }: Props) => {
     return (
         <>
             <button onClick={handlePrev}>Previous</button>
-            <button onClick={handlePrev}>Next</button>
+            <button onClick={handleNext}>Next</button>
 
             <span dangerouslySetInnerHTML={{__html: emoji.htmlCode[0]}} />
 
