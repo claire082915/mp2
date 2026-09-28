@@ -2,18 +2,13 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import type { Emoji } from '../types/emoji'
 import styles from './ListView.module.css'
+import { decodeHtmlEntity } from '../utils/decodeHtmlEntity'
 
 interface Props {
     emojis: Emoji[];
 }
 
 type SortKey = 'name' | 'category' | 'group';
-
-const decodeHtmlEntity = (html: string): string => {
-    const textarea = document.createElement('textarea');
-    textarea.innerHTML = html;
-    return textarea.value;
-}
 
 const ListView = ({ emojis }: Props) => {
     const [search, setSearch] = useState('');

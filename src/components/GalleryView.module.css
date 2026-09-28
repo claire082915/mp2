@@ -1,0 +1,119 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+.filters {
+    margin: 0 0 1.25rem;
+    padding: 0.75rem 1rem 1rem;
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: 8px;
+}
+
+.legend {
+    padding: 0. 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip:hover {
+    background: #f3f4f6;
+}
+
+.chipActive {
+    background: var(--color-accent, #6366f1);
+    border-color: var(--color-accent, #6366f1);
+    color: #fff;
+}
+
+.chipActive:hover {
+    background: var(--color-accent-hover, #4f46e5);
+}
+
+.checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.chip:has(.checkbox:focus-visible) {
+    outline: 2px solid var(--color-accent, #6366f1);
+    outline-offset: 2px;
+}
+
+.clearButton {
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    border: none;
+    background: none;
+    color: var(--color-accent, #6366f1);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1rem 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text, #111827);
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.card:hover {
+    background: #f9fafb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.emojiGlyph {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.name {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    word-break: break-word;
+}
+
+.empty {
+    padding: 2rem 0;
+    text-align: center;
+    color: #6b7280;
+}
