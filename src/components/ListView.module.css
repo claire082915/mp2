@@ -13,7 +13,9 @@
 }
 
 .searchInput {
-    flex: 1 1 200px;
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 400px;
     padding: 0.5rem 0.75rem;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -50,6 +52,7 @@
 
 .list {
     list-style: none;
+    width: 650px;
     margin: 0;
     padding: 0;
     display: grid;
@@ -64,6 +67,7 @@
 
 .listItem:hover {
     background: #f9fafb;
+    transform: translateY(-2px);
 }
 
 .link {
