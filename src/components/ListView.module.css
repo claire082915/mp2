@@ -1,5 +1,5 @@
 .container {
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 1rem;
     font-family: system-ui, -apple-system, sans-serif;
@@ -13,8 +13,8 @@
 }
 
 .searchInput {
-    flex: 0 0 400px;
-    width: 400px;
+    flex: 0 0 300px;
+    width: 300px;
     min-width: 400px;
     padding: 0.5rem 0.75rem;
     border: 1px solid #ccc;
@@ -52,7 +52,7 @@
 
 .list {
     list-style: none;
-    width: 650px;
+    width: 700px;
     margin: 0;
     padding: 0;
     display: grid;
@@ -94,4 +94,32 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+.sortGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sortLabel {
+    font-size: 0.9rem;
+    color: #4b5563;
+    white-space: nowrap;
+}
+
+.itemText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.itemName {
+    font-size: 0.95rem;
+}
+
+.itemCategory {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: capitalize;
 }

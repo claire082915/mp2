@@ -8,7 +8,7 @@ interface Props {
     emojis: Emoji[];
 }
 
-type SortKey = 'name' | 'category' | 'group';
+type SortKey = 'name' | 'category';
 
 const ListView = ({ emojis }: Props) => {
     const [search, setSearch] = useState('');
@@ -43,14 +43,21 @@ const ListView = ({ emojis }: Props) => {
                     onChange={(e) => setSearch(e.target.value)} 
                 />
 
-                <label htmlFor="emoji-sort" className={styles.visuallyHidden}>
-                    Sort By
-                </label>
+                <div className={styles.sortGroup}>
+                    <label htmlFor="emoji-sort" className={styles.sortLabel}>
+                        Sort by
+                    </label>
 
-                <select id="emoji-sort" className={styles.select} value={sortBy} onChange={(e) => setSortBy(e.target.value as any)} aria-label="Sort emojis by">
-                    <option value="name">Name</option>
-                    <option value="category">Category</option>
-                </select>
+                    <select
+                        id="emoji-sort"
+                        className={styles.select}
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value as SortKey)}
+                    >
+                        <option value="name">Name</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
 
                 <button 
                     className={styles.orderButton} 
@@ -60,8 +67,6 @@ const ListView = ({ emojis }: Props) => {
                 </button>
             </div>
 
-            
-
             <ul className={styles.list}>
                 {processedEmojis.map((emoji) => (
                     <li key={`${emoji.group}-${emoji.category}-${emoji.name}`} className={styles.listItem}>
@@ -69,7 +74,10 @@ const ListView = ({ emojis }: Props) => {
                             <span className={styles.emojiGlyph}>
                                 {emoji.htmlCode?.[0] ? decodeHtmlEntity(emoji.htmlCode[0]) : ''}
                             </span>
-                            {emoji.name}
+                            <span className={styles.itemText}>
+                                <span className={styles.itemName}>{emoji.name}</span>
+                                <span className={styles.itemCategory}>{emoji.category}</span>
+                            </span>
                         </Link>
                     </li>
                 ))}
